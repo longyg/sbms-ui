@@ -4,6 +4,7 @@
         "login": "Login",
         "logout": "Logout",
         "doc": "Document",
-        "blog": "Blog"
+        "blog": "Blog",
+        "backupRestore": "Backup & Restore"
     }
 }

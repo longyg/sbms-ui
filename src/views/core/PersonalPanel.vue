@@ -2,7 +2,7 @@
   <div class="personal-panel">
     <div class="personal-desc" :style="{'background':this.$store.state.app.themeColor}">
       <div class="avatar-container">
-        <img class="avatar" :src="require('@/assets/logo.png')" />
+        <img class="avatar" :src="require('@/assets/user.png')" />
       </div>
       <div class="name-role">
         <span class="sender">{{ user.name }} - {{ user.role }}</span>
@@ -59,7 +59,7 @@ export default {
       default() {
         return {
           name: "admin",
-          avatar: "@/assets/logo.png",
+          avatar: "@/assets/user.png",
           role: "超级管理员",
           registeInfo: "注册时间：2018-12-25 ",
         }

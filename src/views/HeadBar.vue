@@ -33,7 +33,25 @@
             <div class="lang-item" @click="changeLanguage('en_US')">English</div>
           </el-popover>
         </el-menu-item>
-        <el-menu-item index="3">
+        <el-menu-item index="3" v-popover:popover-message>
+          <!-- 我的私信 -->
+          <el-badge :value="5" :max="99" class="badge" type="error">
+            <li style="color:#fff;" class="fa fa-envelope-o fa-lg"></li>
+          </el-badge>
+          <el-popover ref="popover-message" placement="bottom-end" trigger="click">
+            <message-panel></message-panel>
+          </el-popover>
+        </el-menu-item>
+        <el-menu-item index="4" v-popover:popover-notice>
+          <!-- 系统通知 -->
+          <el-badge :value="4" :max="99" class="badge" type="error">
+            <li style="color:#fff;" class="fa fa-bell-o fa-lg"></li>
+          </el-badge>
+          <el-popover ref="popover-notice" placement="bottom-end" trigger="click">
+            <notice-panel></notice-panel>
+          </el-popover>
+        </el-menu-item>
+        <el-menu-item index="5" v-popover:popover-personal>
           <!-- 用户信息 -->
           <span class="user-info"><img :src="user.avatar" />{{user.name}}</span>
           <el-popover ref="popover-personal" placement="bottom-end" trigger="click" :visible-arrow="false">
@@ -50,11 +68,15 @@ import { mapState } from 'vuex'
 import Hamburger from "@/components/Hamburger"
 import ThemePicker from '@/components/ThemePicker'
 import PersonalPanel from '@/views/core/PersonalPanel'
+import NoticePanel from '@/views/core/NoticePanel'
+import MessagePanel from '@/views/core/MessagePanel'
 export default {
   components:{
     Hamburger,
     ThemePicker,
-    PersonalPanel
+    PersonalPanel,
+    NoticePanel,
+    MessagePanel
   },
   data() {
     return {
@@ -91,7 +113,7 @@ export default {
     var user = sessionStorage.getItem("user")
     if (user) {
       this.user.name = user
-      this.user.avatar = require("@/assets/logo.png")
+      this.user.avatar = require("@/assets/user.png")
     }
   },
   computed:{

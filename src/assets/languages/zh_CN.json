@@ -4,6 +4,7 @@
         "login": "登录",
         "logout": "退出登录",
         "doc": "文档",
-        "blog": "博客"
+        "blog": "博客",
+        "backupRestore": "备份还原"
     }
 }

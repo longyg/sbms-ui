@@ -91,6 +91,9 @@ export default {
     }
   },
   methods: {
+    openWindow(url) {
+      window.open(url)
+    },
     selectNavBar(key, keyPath) {
       console.log(key, keyPath)
     },
@@ -112,8 +115,13 @@ export default {
   mounted() {
     var user = sessionStorage.getItem("user")
     if (user) {
-      this.user.name = user
-      this.user.avatar = require("@/assets/user.png")
+      let params = {name:user}
+      this.$api.user.findByName(params).then((res) => {
+				if(res.code == 200) {
+          this.user = res.data
+          this.user.avatar = require("@/assets/user.png")
+        }
+      })
     }
   },
   computed:{

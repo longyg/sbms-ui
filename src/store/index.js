@@ -5,10 +5,16 @@ Vue.use(vuex);
 
 // 引入子模块
 import app from './modules/app'
+import menu from './modules/menu'
+import user from './modules/user'
+import tab from './modules/tab'
 
 const store = new vuex.Store({
     modules: {
-        app: app
+        app: app,
+        menu: menu,
+        user: user,
+        tab: tab
     }
 })
 

@@ -7,7 +7,10 @@
     label-width="0px"
     class="demo-ruleForm login-container"
   >
-    <span class="tool-bar"></span>
+    <span class="tool-bar">
+      <!-- 主题切换 -->
+      <theme-picker style="float:right;" class="theme-picker" :default="themeColor" @onThemeChange="onThemeChange"></theme-picker>
+    </span>
     <h2 class="title" style="padding-left: 22px">系统登录</h2>
     <el-form-item prop="username">
       <el-input type="text" v-model="loginForm.username" auto-complete="off" placeholder="用户名"></el-input>
@@ -47,11 +50,16 @@
 </template>
 
 <script>
-import mock from '@/mock/index.js'
-import Cookies from "js-cookie";
+import '@/mock/index.js'
+import { mapState } from 'vuex'
+import Cookies from "js-cookie"
+import ThemePicker from "@/components/ThemePicker"
 
 export default {
   name: "Login",
+  components: {
+    ThemePicker
+  },
   data() {
     return {
       loading: false,
@@ -86,6 +94,7 @@ export default {
           } else {
             Cookies.set("token", res.data.token);
             sessionStorage.setItem("user", userInfo.username);
+            this.$store.commit('menuRouteLoaded', false) // 每次登录后，强制重新加载导航菜单
             this.$router.push("/");
           }
           this.loading = false;
@@ -101,29 +110,41 @@ export default {
     reset() {
       this.$refs.loginForm.resetFields();
     },
+    // 切换主题
+    onThemeChange: function(themeColor) {
+      this.$store.commit('setThemeColor', themeColor)
+    }
   },
   mounted() {
     this.refreshCaptcha();
   },
+  computed:{
+    ...mapState({
+      themeColor: state=>state.app.themeColor
+    })
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 .login-container {
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-  background-clip: padding-box;
-  margin: 100px auto;
-  width: 350px;
-  padding: 35px 35px 15px 35px;
-  background: #fff;
-  border: 1px solid #eaeaea;
-  box-shadow: 0 0 25px #cac6c6;
-  .title {
-    margin: 0px auto 30px auto;
-    text-align: center;
-    color: #505458;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    background-clip: padding-box;
+    margin: 100px auto;
+    width: 350px;
+    padding: 35px 35px 15px 35px;
+    background: #fff;
+    border: 1px solid #eaeaea;
+    box-shadow: 0 0 25px #cac6c6;
+    .title {
+      margin: 0px auto 30px auto;
+      text-align: center;
+      color: #505458;
+    }
+    .remember {
+      margin: 0px 0px 35px 0px;
+    }
   }
-}
 </style>

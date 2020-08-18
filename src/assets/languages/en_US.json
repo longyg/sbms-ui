@@ -6,5 +6,13 @@
         "doc": "Document",
         "blog": "Blog",
         "backupRestore": "Backup & Restore"
+    },
+    "action": {
+        "search": "Search",
+        "add": "Add",
+        "operation": "Operations",
+        "edit": "Edit",
+        "delete": "Delete",
+        "batchDelete": "Batch Delete"
     }
 }

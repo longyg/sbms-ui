@@ -35,7 +35,7 @@ export default {
     },
     mainTabsActiveName: {
       get () { return this.$store.state.tab.mainTabsActiveName },
-      set (val) { this.$store.commit('updateMainTabsActiveName', val) }
+      set (val) { this.$store.commit('updateMainTabsActiveName', val)}
     }
   },
   watch: {

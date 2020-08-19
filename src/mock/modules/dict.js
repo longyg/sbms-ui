@@ -28,7 +28,6 @@ export function batchDelete() {
 }
 // 分页查询
 export function findPage(params) {
-    console.log(params)
     let findPageData = {
         "code": 200,
         "msg": null,

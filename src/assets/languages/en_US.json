@@ -8,11 +8,14 @@
         "backupRestore": "Backup & Restore"
     },
     "action": {
+        "loading": "Loading...",
         "search": "Search",
         "add": "Add",
         "operation": "Operations",
         "edit": "Edit",
         "delete": "Delete",
-        "batchDelete": "Batch Delete"
+        "batchDelete": "Batch Delete",
+        "cancel": "Cancel",
+        "submit": "Submit"
     }
 }

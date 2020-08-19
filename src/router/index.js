@@ -77,6 +77,7 @@ function addDynamicMenuAndRoutes(userName) {
       let dynamicRoutes = addDynamicRoutes(res.data)
       router.options.routes[0].children = router.options.routes[0].children.concat(dynamicRoutes)
       router.addRoutes(router.options.routes)
+      console.log(router.options)
       // 保存加载状态
       store.commit('menuRouteLoaded', true)
       // 保存菜单树
